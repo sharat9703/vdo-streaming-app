@@ -10,7 +10,7 @@ export default class Home extends Component{
     }
     async componentDidMount(){
         try{
-            const response = await fetch('http://localhost:8000/video');
+            const response = await fetch('http://localhost:8000/videos');
             const data = response.json();
             this.setState({videos:[...data]});
         } catch(err){
@@ -22,20 +22,20 @@ export default class Home extends Component{
             <div className="App App-header">
                 <div className="container">
                       <div className="row">
-                         {this.state.videos.map(video =>{
-                            <div className="col-md-4" key={video.id}>
-                                <Link to={`/player/${video.id}`}>
-                                    <div className="card border-0">
-                                        <img src={`http://localhost:8000/video${video.poster}`} alt=`${video.name}`/>
-                                        <div className="card-body">
-                                            <p>{video.name}</p>
-                                            <p>{video.duration}</p>
-                                        </div>
+                         {this.state.videos.map(video =>
+                             <div className="col-md-4" key={video.id}>
+                            <Link to={`/player/${video.id}`}>
+                                <div className="card border-0">
+                                    <img src={`http://localhost:8000/videos${video.poster}`} alt={video.name}/>
+                                    <div className="card-body">
+                                        <p>{video.name}</p>
+                                        <p>hello</p>
+                                        <p>{video.duration}</p>
                                     </div>
-                                </Link>
-                            </div>
-                         })}
-                        </div>  
+                                </div>
+                            </Link>
+                        </div>)}
+                    </div>  
                 </div>
 
             </div>
