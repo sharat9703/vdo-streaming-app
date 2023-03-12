@@ -1,17 +1,26 @@
 import React from 'react';
-
+import {Route, BrowserRouter,Routes} from 'react-router-dom';
 import './App.css';
+import Home from './Home';
+import Player from './Player';
+import Main from './Main';
+
 
 const App = ()=>{
   return (
-    <div className='App'>
-      <header className='header'>
-        <video controls muted>
-          <source src='http://localhost:8000/video' type='video/mp4'></source>
-        </video>
-      </header>
-    </div>
+    
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Main/>}>
+             <Route index element={<Home/>}/>
+             <Route path='/home' element={<Home/>}/>
+             <Route path='/player/:id' component={<Player/>}/>
+          </Route>
+        </Routes>
+        
+      </BrowserRouter>
+    
   )
-}
+} 
 
 export default App;
